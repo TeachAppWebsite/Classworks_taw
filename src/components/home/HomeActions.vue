@@ -66,6 +66,16 @@
     >
       {{ isFullscreen ? "退出全屏" : "全屏显示" }}
     </v-btn>
+    <!-- 新增返回导航按钮 -->
+    <v-btn
+      v-if="showBackNavButton"
+      class="ml-2"
+      color="purple-lighten-3"
+      size="large"
+      @click="goToWelcome"
+    >
+      返回导航
+    </v-btn>
     <v-btn
       v-if="showTestCardButton"
       class="ml-2"
@@ -116,6 +126,10 @@ export default {
     isFullscreen: Boolean,
     showAntiScreenBurnCard: Boolean,
     showTestCardButton: Boolean,
+    showBackNavButton: {
+      type: Boolean,
+      default: true
+    }
   },
   emits: [
     "upload",
@@ -124,5 +138,10 @@ export default {
     "toggle-fullscreen",
     "add-test-card",
   ],
+  methods: {
+    goToWelcome() {
+      window.location.href = 'https://welcome.dy.ci/';
+    }
+  }
 };
 </script>
